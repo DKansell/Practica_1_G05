@@ -1,11 +1,16 @@
 #pragma once
+enum class Difficulty { N, EASY, MEDIUM, HARD }; ///Va al main?
+
 class Map
 {
 public:
-	enum class Difficulty { NULL, EASY, MEDIUM, HARD }; ///Va al main?
-	Difficulty dificultat;
+
 	int numRows;
 	int numColumns;
-	Map(int dificultat, int numRows, int numColumns);
+	char **map;
+
+	Map(int dificultat);
 	~Map();
+	void printMap();
 };
+
