@@ -24,6 +24,13 @@ Map::~Map()
 {
 }
 
+
+void Map::modifyMap(int Row, int Column, char content) {
+
+	map[Row][Column] = content;
+
+}
+
 void Map::printMap() {
 
 	for (int i = 0; i < numRows; i++) {
