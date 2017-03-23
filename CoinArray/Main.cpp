@@ -10,10 +10,12 @@ int main() {
 	Difficulty dificultat; //S'haura de cridar amb static cast
 	//cin >> ....
 
-	Map mapa(2);//Constructor del objecte mapa: li pasem el paràmetre de la dificultat.
+	//Constructor del objecte mapa: li pasem el paràmetre de la dificultat.
+	Map mapa(2);
 	mapa.printMap();
 
-	Player player (mapa.numRows, mapa.numColumns);
+	//Constructor del objecte player
+	Player player;
 	
 
 	system("pause");

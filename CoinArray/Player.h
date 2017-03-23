@@ -1,15 +1,15 @@
 #pragma once
 #include "Map.h"
 
-class Player
+class Player : public Map
 {
 public:
 
 	int playerX, playerY;
 	int score;
 
-	Player(Map mapa, int numRows, int numColumns);
+	Player();
 	~Player();
-	bool isCoin(Map mapa, int x, int y);
+	//bool isCoin(Map mapa, int x, int y);
 };
 

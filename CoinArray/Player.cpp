@@ -1,10 +1,11 @@
 #include "Player.h"
+#include "Map.h"
 #include <iostream>
 
 
-
-Player::Player(Map mapa, int numRows, int numColumns) 
+Player::Player() 
 {
+
 	int auxX, auxY;
 	bool foundCoin = true;
 
@@ -12,10 +13,9 @@ Player::Player(Map mapa, int numRows, int numColumns)
 		auxX = (rand() % numRows);
 		auxY = (rand() % numColumns);
 
-		if (mapa[auxX][auxY] == '$') foundCoin = true;
+		if (map[auxX][auxY] == '$') foundCoin = true;
 		else foundCoin = false;
 
-		//bool foundCoin = Player::isCoin(mapa, auxX, auxY);
 
 	} while (foundCoin = !false);
 
@@ -29,7 +29,3 @@ Player::~Player()
 {
 }
 
-bool Player::isCoin(Map mapa, int auxX, int auxY) {
-
-	mapa[auxX][auxY] == '$';
-}
