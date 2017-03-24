@@ -3,12 +3,12 @@ enum class Difficulty { N, EASY, MEDIUM, HARD }; ///Va al main? ///Es pot posar 
 
 class Map
 {
-public:
+	friend class CoinManager;
 	friend class Player;
 	int numRows;
 	int numColumns;
 	char **map;
-
+public:
 	Map(int dificultat);
 	~Map();
 	void printMap();

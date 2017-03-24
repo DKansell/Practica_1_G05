@@ -12,11 +12,10 @@ int main() {
 
 	//Constructor del objecte mapa: li pasem el paràmetre de la dificultat.
 	Map mapa(2);
-	mapa.printMap();
-
-	//Constructor del objecte player
-	Player player;
 	
-
+	//Constructor del objecte player
+	Player player(mapa);
+	mapa.printMap();
+	
 	system("pause");
 }

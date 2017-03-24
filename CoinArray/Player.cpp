@@ -3,24 +3,25 @@
 #include <iostream>
 
 
-Player::Player() 
+Player::Player(Map mapa) 
 {
 
 	int auxX, auxY;
 	bool foundCoin = true;
 
 	do {
-		auxX = (rand() % numRows);
-		auxY = (rand() % numColumns);
+		auxX = (rand() % mapa.numRows);
+		auxY = (rand() % mapa.numColumns);
 
-		if (map[auxX][auxY] == '$') foundCoin = true;
-		else foundCoin = false;
+		if (mapa.map[auxX][auxY] != '$') foundCoin = false;
 
 
-	} while (foundCoin = !false);
+	} while (foundCoin == true);
 
 	playerX = auxX;
 	playerY = auxY;
+
+	mapa.map[playerX][playerY] = '@';
 
 }
 
