@@ -1,5 +1,5 @@
 #pragma once
-enum class Difficulty { N, EASY, MEDIUM, HARD }; ///Va al main? ///Es pot posar a la capçalera de la classe MAP i utilitzarla al main
+enum class Difficulty { N, EASY, MEDIUM, HARD }; 
 
 class Map
 {

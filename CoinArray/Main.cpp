@@ -6,6 +6,7 @@
 #include <ctime>
 #include <cstdlib>
 
+
 std::istream& operator >>(std::istream &is, Difficulty& valor)
 {
 	int intVal;
@@ -14,10 +15,12 @@ std::istream& operator >>(std::istream &is, Difficulty& valor)
 	return is;
 }
 
-int main() {
+void main() {
 
 	srand(static_cast<unsigned>(time(nullptr)));
 	Difficulty dificultat; 
+	std::clock_t start;
+	double duration;
 	
 	std::cout << "Controls: Use WASD to move the player." << std::endl;
 	std::cout << "\nChoose a difficulty: \n1 - EASY \n2 - MEDIUM \n3 - HARD" << std::endl;
@@ -33,7 +36,10 @@ int main() {
 
 	//Determinem monedes a recollir per finalitzar el joc
 	int MAX_COINS = ((30 * static_cast<int>(dificultat)) + rand() % ((30 * static_cast<int>(dificultat) * 2) - (30 * static_cast<int>(dificultat))));
+
 	std::cout << "\nObjective: You have to pick up " <<MAX_COINS<<" coins to win."<<std::endl;
+
+	start = std::clock();
 
 	//Tecla que apretarà el jugador
 	Input::Key keyPressed;
@@ -49,9 +55,14 @@ int main() {
 			mapa.printMap();
 			std::cout << "\n\nScore: " << player.score << " / " << MAX_COINS << std::endl;
 		}
+
+		if (keyPressed == Input::Key::ESC) {
+			exit(0);
+		}
 	}
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 	
-	// TEMPS: std::cout << "\nYou've picked up " << MAX_COINS << " in " << << "seconds"<< std::endl;
+	std::cout << "\nYou've picked up " << MAX_COINS << " in " << duration << " seconds"<< std::endl;
 
 	system("pause");
 }

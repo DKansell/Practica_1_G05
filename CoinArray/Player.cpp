@@ -44,7 +44,7 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager *coins) 
 				score++;
 				coins->updateCoins(playerRow, playerColumn, mapa);
 			}
-			mapa.modifyMap(playerRow, playerColumn, '@');
+			else mapa.modifyMap(playerRow, playerColumn, '@');
 		}
 		break;
 	case Input::Key::A:
@@ -55,7 +55,7 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager *coins) 
 				score++;
 				coins->updateCoins(playerRow, playerColumn, mapa);
 			}
-			mapa.modifyMap(playerRow, playerColumn, '@');
+			 else mapa.modifyMap(playerRow, playerColumn, '@');
 		}
 		break;
 	case Input::Key::S:
@@ -66,7 +66,7 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager *coins) 
 				score++;
 				coins->updateCoins(playerRow, playerColumn, mapa);
 			}
-			mapa.modifyMap(playerRow, playerColumn, '@');
+			else mapa.modifyMap(playerRow, playerColumn, '@');
 		}
 		break;
 	case Input::Key::D:
@@ -77,7 +77,7 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager *coins) 
 				score++;
 				coins->updateCoins(playerRow, playerColumn, mapa);
 			}
-			mapa.modifyMap(playerRow, playerColumn, '@');
+			else mapa.modifyMap(playerRow, playerColumn, '@');
 		}
 		break;
 	}

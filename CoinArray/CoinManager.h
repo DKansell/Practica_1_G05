@@ -6,7 +6,7 @@ class CoinManager
 {
 	friend class Player;
 	int visibleCoins;
-public:	
+public:
 	CoinManager (Map mapa);
 	~CoinManager();
 	void drawCoins(Map mapa);
