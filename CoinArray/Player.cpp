@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Map.h"
+#include "CoinManager.h"
 #include <iostream>
 
 
@@ -31,7 +32,7 @@ Player::~Player()
 {
 }
 
-void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager coins) {
+void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager *coins) {
 
 	switch (keyPressed)
 	{
@@ -41,7 +42,7 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager coins) {
 			playerRow--;
 			if (mapa.map[playerRow][playerColumn] == '$') {
 				score++;
-				coins.updateCoins(playerRow, playerColumn, mapa);
+				coins->updateCoins(playerRow, playerColumn, mapa);
 			}
 			mapa.modifyMap(playerRow, playerColumn, '@');
 		}
@@ -52,7 +53,7 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager coins) {
 			playerColumn--;
 			if (mapa.map[playerRow][playerColumn] == '$') {
 				score++;
-				coins.updateCoins(playerRow, playerColumn, mapa);
+				coins->updateCoins(playerRow, playerColumn, mapa);
 			}
 			mapa.modifyMap(playerRow, playerColumn, '@');
 		}
@@ -63,7 +64,7 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager coins) {
 			playerRow++;
 			if (mapa.map[playerRow][playerColumn] == '$') {
 				score++;
-				coins.updateCoins(playerRow, playerColumn, mapa);
+				coins->updateCoins(playerRow, playerColumn, mapa);
 			}
 			mapa.modifyMap(playerRow, playerColumn, '@');
 		}
@@ -74,7 +75,7 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager coins) {
 			playerColumn++;
 			if (mapa.map[playerRow][playerColumn] == '$') {
 				score++;
-				coins.updateCoins(playerRow, playerColumn, mapa);
+				coins->updateCoins(playerRow, playerColumn, mapa);
 			}
 			mapa.modifyMap(playerRow, playerColumn, '@');
 		}

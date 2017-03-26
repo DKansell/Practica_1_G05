@@ -43,7 +43,7 @@ int main() {
 		keyPressed = Input::getKey();
 
 		if (keyPressed != Input::Key::NONE) {
-			player.updatePlayer(mapa, keyPressed, coins);
+			player.updatePlayer(mapa, keyPressed, &coins);
 
 			system("cls");
 			mapa.printMap();
