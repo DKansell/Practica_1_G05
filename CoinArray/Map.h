@@ -12,6 +12,6 @@ public:
 	Map(int dificultat);
 	~Map();
 	void printMap();
-	void modifyMap(int Row, int Column, char content);
+	void modifyMap(int row, int column, char content);
 };
 

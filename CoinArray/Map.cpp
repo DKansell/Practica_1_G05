@@ -4,8 +4,8 @@
 
 Map::Map(int dificultat) :
 	//Inicializamos la dimension de las filas y columnas segun la dificultad
-	numRows ((5 * dificultat) + rand() % ((5 * dificultat * 2)- (5 * dificultat))),
-	numColumns ((5 * dificultat) + rand() % ((5 * dificultat * 2) - (5 * dificultat)))
+	numRows ((5 * dificultat) + rand() % ((5 * dificultat * 2)-(5 * dificultat))),
+	numColumns ((5 * dificultat) + rand() % ((5 * dificultat * 2)-(5 * dificultat)))
 {
 	//Reservamos memoria para el mapa
 	map = new char *[numRows]; ///Punteros a cada fila
@@ -25,9 +25,9 @@ Map::~Map()
 }
 
 
-void Map::modifyMap(int Row, int Column, char content) {
+void Map::modifyMap(int row, int column, char content) {
 
-	map[Row][Column] = content;
+	map[row][column] = content;
 
 }
 

@@ -1,26 +1,15 @@
 #include "CoinManager.h"
 #include <iostream>
+
 using namespace std;
 
 
 
 CoinManager::CoinManager(Map mapa) :
-	visibleCoins ((int)0.03*(mapa.numRows*mapa.numColumns) + rand() % (int)(0.1*(mapa.numRows*mapa.numColumns)))
+	visibleCoins((int)0.03*(mapa.numRows*mapa.numColumns) + rand() % (int)(0.1*(mapa.numRows*mapa.numColumns))),
+	monedes (0)
 {
-	int coinX, coinY, coins = 0;
-
-	do {
-		
-		coinX = rand() % mapa.numRows;
-		coinY = rand() % mapa.numColumns;
-
-		if (mapa.map[coinX][coinY] != '$')
-		{
-			mapa.modifyMap(coinX, coinY, '$');
-			coins++;
-		}
-		
-	} while (coins < visibleCoins);
+	drawCoins(mapa);
 };
 
 
@@ -28,13 +17,27 @@ CoinManager::~CoinManager()
 {
 }
 
-void CoinManager::updateCoins(int x, int y, Map mapa) {
+void CoinManager::drawCoins(Map mapa) {
 
-	if (visibleCoins > 0) {
-		mapa.modifyMap(x, y, '.');
-		visibleCoins--;
-	}
+	int coinRow, coinColumn;
+	int count = 0;
 
-	else CoinManager coins(mapa);
 
+	do {
+
+		coinRow = rand() % mapa.numRows;
+		coinColumn = rand() % mapa.numColumns;
+
+		if (mapa.map[coinRow][coinColumn] != '$')
+		{
+			mapa.modifyMap(coinRow, coinColumn, '$');
+			count++;
+		}
+
+	} while (count <= visibleCoins);
 }
+
+void CoinManager::updateCoins(int row, int column, Map mapa) {
+		mapa.modifyMap(row, column, '.');
+}
+

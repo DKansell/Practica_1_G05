@@ -7,22 +7,22 @@ Player::Player(Map mapa) :
 	score (0)
 {
 
-	int auxX, auxY;
+	int auxRow, auxColumn;
 	bool foundCoin = true;
 
 	do {
-		auxX = (rand() % mapa.numRows);
-		auxY = (rand() % mapa.numColumns);
+		auxColumn = (rand() % mapa.numColumns);
+		auxRow = (rand() % mapa.numRows);
 
-		if (mapa.map[auxX][auxY] != '$') foundCoin = false;
+		if (mapa.map[auxRow][auxColumn] != '$') foundCoin = false;
 
 
 	} while (foundCoin == true);
 
-	playerX = auxX;
-	playerY = auxY;
+	playerRow = auxRow;
+	playerColumn = auxColumn;
 
-	mapa.map[playerX][playerY] = '@';
+	mapa.map[playerRow][playerColumn] = '@';
 
 }
 
@@ -36,48 +36,49 @@ void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager coins) {
 	switch (keyPressed)
 	{
 	case Input::Key::W:
-		if (playerY > 0) {
-			mapa.modifyMap(playerX, playerY, '.');
-			playerY--;
-			if (mapa.map[playerX][playerY] == '$') {
+		if (playerRow > 0) {
+			mapa.modifyMap(playerRow, playerColumn, '.');
+			playerRow--;
+			if (mapa.map[playerRow][playerColumn] == '$') {
 				score++;
-				coins.updateCoins(playerX, playerY, mapa);
+				coins.updateCoins(playerRow, playerColumn, mapa);
 			}
-			mapa.modifyMap(playerX, playerY, '@');
+			mapa.modifyMap(playerRow, playerColumn, '@');
 		}
 		break;
 	case Input::Key::A:
-		if (playerX > 0) {
-			mapa.modifyMap(playerX, playerY, '.');
-			playerX--;
-			if (mapa.map[playerX][playerY] == '$') {
+		if (playerColumn > 0) {
+			mapa.modifyMap(playerRow, playerColumn, '.');
+			playerColumn--;
+			if (mapa.map[playerRow][playerColumn] == '$') {
 				score++;
-				coins.updateCoins(playerX, playerY, mapa);
+				coins.updateCoins(playerRow, playerColumn, mapa);
 			}
-			mapa.modifyMap(playerX, playerY, '@');
+			mapa.modifyMap(playerRow, playerColumn, '@');
 		}
 		break;
 	case Input::Key::S:
-		if (playerY < mapa.numRows) {
-			mapa.modifyMap(playerX, playerY, '.');
-			playerY++;
-			if (mapa.map[playerX][playerY] == '$') {
+		if (playerRow < mapa.numRows-1) {
+			mapa.modifyMap(playerRow, playerColumn, '.');
+			playerRow++;
+			if (mapa.map[playerRow][playerColumn] == '$') {
 				score++;
-				coins.updateCoins(playerX, playerY, mapa);
+				coins.updateCoins(playerRow, playerColumn, mapa);
 			}
-			mapa.modifyMap(playerX, playerY, '@');
+			mapa.modifyMap(playerRow, playerColumn, '@');
 		}
 		break;
 	case Input::Key::D:
-		if (playerX < mapa.numRows) {
-			mapa.modifyMap(playerX, playerY, '.');
-			playerX++;
-			if (mapa.map[playerX][playerY] == '$') {
+		if (playerColumn < mapa.numColumns-1) {
+			mapa.modifyMap(playerRow, playerColumn, '.');
+			playerColumn++;
+			if (mapa.map[playerRow][playerColumn] == '$') {
 				score++;
-				coins.updateCoins(playerX, playerY, mapa);
+				coins.updateCoins(playerRow, playerColumn, mapa);
 			}
-			mapa.modifyMap(playerX, playerY, '@');
+			mapa.modifyMap(playerRow, playerColumn, '@');
 		}
 		break;
 	}
 }
+

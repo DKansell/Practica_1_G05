@@ -7,12 +7,12 @@ class Player
 {
 public:
 
-	int playerX, playerY;
+	int playerRow, playerColumn;
 	int score;
+
 
 	Player(Map mapa);
 	~Player();
 	void updatePlayer(Map mapa, Input::Key keyPressed, CoinManager coins);
-	
 };
 
