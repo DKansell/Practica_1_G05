@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include "Player.h"
+#include "CoinManager.h"
 
 int main() {
 
@@ -13,8 +14,12 @@ int main() {
 	//Constructor del objecte mapa: li pasem el paràmetre de la dificultat.
 	Map mapa(2);
 	
+
+	CoinManager coins(mapa);
+
 	//Constructor del objecte player
 	Player player(mapa);
+
 	mapa.printMap();
 	
 	system("pause");
