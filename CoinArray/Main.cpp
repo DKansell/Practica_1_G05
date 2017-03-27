@@ -6,7 +6,7 @@
 #include <ctime>
 #include <cstdlib>
 
-
+//Sobrecarga del operador >> para castear un valor Difficulty a tipo int
 std::istream& operator >>(std::istream &is, Difficulty& valor)
 {
 	int intVal;
@@ -15,51 +15,56 @@ std::istream& operator >>(std::istream &is, Difficulty& valor)
 	return is;
 }
 
-void main() {
-
+void main() 
+{
+	//Seed random
 	srand(static_cast<unsigned>(time(nullptr)));
+
 	Difficulty dificultat; 
+
+	//Creación de las variables de control de tiempo
 	std::clock_t start;
 	double duration;
 	
+	//Instrucciones iniciales para el jugador y selección de dificultad
 	std::cout << "Controls: Use WASD to move the player." << std::endl;
 	std::cout << "\nChoose a difficulty: \n1 - EASY \n2 - MEDIUM \n3 - HARD" << std::endl;
 	std::cin >> dificultat;
 	
 
-	//Constructor del objecte mapa: li pasem el paràmetre de la dificultat.
+	//Constructores de los objetos de los ámbitos mapa, player y monedas.
 	Map mapa(static_cast<int>(dificultat));
-	//Constructor del objete CoinManager, inicialitza les monedes al mapa.
 	CoinManager coins(mapa);
-	//Constructor del objecte player, inicialitza la posició inicial del jugador.
 	Player player(mapa);
 
-	//Determinem monedes a recollir per finalitzar el joc
+	//Determinación de las monedas totales a recoger
 	int MAX_COINS = ((30 * static_cast<int>(dificultat)) + rand() % ((30 * static_cast<int>(dificultat) * 2) - (30 * static_cast<int>(dificultat))));
 
 	std::cout << "\nObjective: You have to pick up " <<MAX_COINS<<" coins to win."<<std::endl;
 
 	start = std::clock();
 
-	//Tecla que apretarà el jugador
+	//Variable donde guardamos el input de control del jugador
 	Input::Key keyPressed;
 
-	while (player.score < MAX_COINS) {
-
+	while (player.score < MAX_COINS) 
+	{
 		keyPressed = Input::getKey();
 
-		if (keyPressed != Input::Key::NONE) {
+		if (keyPressed != Input::Key::NONE) 
+		{
 			player.updatePlayer(mapa, keyPressed, &coins);
 
 			system("cls");
 			mapa.printMap();
 			std::cout << "\n\nScore: " << player.score << " / " << MAX_COINS << std::endl;
 		}
-
-		if (keyPressed == Input::Key::ESC) {
+		if (keyPressed == Input::Key::ESC) 
+		{
 			exit(0);
 		}
 	}
+
 	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 	
 	std::cout << "\nYou've picked up " << MAX_COINS << " in " << duration << " seconds"<< std::endl;

@@ -25,19 +25,17 @@ Map::~Map()
 }
 
 
-void Map::modifyMap(int row, int column, char content) {
-
+void Map::modifyMap(int row, int column, char content) 
+{
 	map[row][column] = content;
-
 }
 
-void Map::printMap() {
-
+void Map::printMap() 
+{
 	for (int i = 0; i < numRows; i++) {
 		for (int j = 0; j < numColumns; j++) {
 			std::cout << map[i][j] << " ";
 		}
 		std::cout << "\n";
 	}
-
 }

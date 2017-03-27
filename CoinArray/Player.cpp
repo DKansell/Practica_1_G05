@@ -7,7 +7,6 @@
 Player::Player(Map mapa) :
 	score (0)
 {
-
 	int auxRow, auxColumn;
 	bool foundCoin = true;
 
@@ -24,7 +23,6 @@ Player::Player(Map mapa) :
 	playerColumn = auxColumn;
 
 	mapa.map[playerRow][playerColumn] = '@';
-
 }
 
 
@@ -32,8 +30,8 @@ Player::~Player()
 {
 }
 
-void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager *coins) {
-
+void Player::updatePlayer (Map mapa, Input::Key keyPressed, CoinManager *coins) 
+{
 	switch (keyPressed)
 	{
 	case Input::Key::W:
