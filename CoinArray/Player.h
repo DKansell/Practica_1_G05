@@ -4,13 +4,11 @@
 
 class Player 
 {
-	
+	int playerRow, playerColumn; //Coordenadas posición del jugador
 public:
-	int playerRow, playerColumn;
-	int score;
-
+	int score; //Almacena puntuación del jugador
 	Player(Map mapa);
 	~Player();
-	void updatePlayer(Map mapa, Input::Key keyPressed, CoinManager *coins);
+	void updatePlayer(Map mapa, Input::Key keyPressed, CoinManager *coins); //Actualiza posición del jugador según el input del teclado
 };
 

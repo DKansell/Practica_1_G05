@@ -11,7 +11,7 @@ class Map
 public:
 	Map(int dificultat);
 	~Map();
-	void printMap();
-	void modifyMap(int row, int column, char content);
+	void printMap(); //Imprime el mapa por pantalla
+	void modifyMap(int row, int column, char content); //Modifica una celda del mapa (por el contenido deseado)
 };
 

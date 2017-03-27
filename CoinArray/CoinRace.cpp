@@ -15,7 +15,7 @@ std::istream& operator >>(std::istream &is, Difficulty& valor)
 	return is;
 }
 
-void main() 
+int main() 
 {
 	//Seed random
 	srand(static_cast<unsigned>(time(nullptr)));
@@ -32,7 +32,7 @@ void main()
 	std::cin >> dificultat;
 	
 
-	//Constructores de los objetos de los ámbitos mapa, player y monedas.
+	//Constructores de objetos de los ámbitos mapa, player y monedas.
 	Map mapa(static_cast<int>(dificultat));
 	CoinManager coins(mapa);
 	Player player(mapa);
@@ -47,6 +47,7 @@ void main()
 	//Variable donde guardamos el input de control del jugador
 	Input::Key keyPressed;
 
+	//GameLoop
 	while (player.score < MAX_COINS) 
 	{
 		keyPressed = Input::getKey();
@@ -65,9 +66,11 @@ void main()
 		}
 	}
 
+	//Muestra tiempo y puntuación final
 	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 	
-	std::cout << "\nYou've picked up " << MAX_COINS << " in " << duration << " seconds"<< std::endl;
+	std::cout << "\nYou've picked up " << MAX_COINS << " coins in " << duration << " seconds"<< std::endl;
 
 	system("pause");
+	return 0;
 }

@@ -3,7 +3,7 @@
 
 
 Map::Map(int dificultat) :
-	//Inicializamos la dimension de las filas y columnas segun la dificultad
+	//Inicializamos la dimensión de las filas y columnas según la dificultad
 	numRows ((5 * dificultat) + rand() % ((5 * dificultat * 2)-(5 * dificultat))),
 	numColumns ((5 * dificultat) + rand() % ((5 * dificultat * 2)-(5 * dificultat)))
 {
@@ -11,7 +11,7 @@ Map::Map(int dificultat) :
 	map = new char *[numRows]; ///Punteros a cada fila
 
 	for (int i = 0; i < numRows; i++)
-		map[i] = new char[numColumns]; ///Punteros de columnas para cada fila
+		map[i] = new char[numColumns]; ///Punteros a columnas para cada fila
 
 	//Inicializamos todas las celdas vacias 
 	for (int i = 0; i < numRows; i++)
@@ -19,7 +19,7 @@ Map::Map(int dificultat) :
 			map[i][j] = '.';
 };
 
-//Destructor
+
 Map::~Map()
 {
 }
